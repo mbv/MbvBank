@@ -5,9 +5,14 @@ Rails:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
 
 Metrics/AbcSize:
   Max: 25
+  Exclude:
+    - 'db/migrate/*.rb'
 
 Style/Documentation:
   Enabled: false
@@ -60,6 +65,10 @@ Metrics/BlockLength:
     - 'test/**/*.rb'
     - 'spec/**/*.rb'
     - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+
+Metrics/MethodLength:
+  Exclude:
     - 'db/migrate/*.rb'
 
 RSpec/MessageSpies:
