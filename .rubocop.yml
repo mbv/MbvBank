@@ -18,10 +18,10 @@ Style/Send:
 Style/SymbolArray:
   Enabled: true
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Style/ModuleFunction:
