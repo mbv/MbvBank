@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: clients
@@ -25,7 +24,7 @@
 #  monthly_income        :decimal(19, 2)
 #  work_place            :text
 #  work_position         :string
-#  citizenship           :string           default("by")
+#  citizenship           :string           default("BY")
 #  registration_city     :string
 #  registration_address  :text
 #  actual_city           :string

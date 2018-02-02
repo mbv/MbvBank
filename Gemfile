@@ -40,6 +40,8 @@ gem 'slim-rails'
 
 gem 'responders'
 
+gem 'countries'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

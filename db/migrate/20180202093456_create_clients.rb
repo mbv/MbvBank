@@ -23,7 +23,7 @@ class CreateClients < ActiveRecord::Migration[5.1]
       t.decimal :monthly_income, precision: 19, scale: 2
       t.text :work_place
       t.string :work_position
-      t.string :citizenship, default: :by
+      t.string :citizenship, default: :BY
       t.string :registration_city
       t.text :registration_address
       t.string :actual_city

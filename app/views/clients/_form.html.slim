@@ -13,7 +13,7 @@
   = f.text_field :birth_date, as: :string, 'data-provide':'datepicker'
   = f.text_area :birth_place
 
-  = f.text_field :gender
+  = f.collection_radio_buttons :gender, Client.genders, :first, :last
 
   = f.text_field :passport_series
   = f.text_field :passport_number
@@ -26,11 +26,9 @@
 
   = f.text_field :email
 
-  = f.text_field :family_status
+  = f.collection_select :family_status, Client.family_statuses, :first, :last
 
-  = f.text_field :disability
-
-  = f.check_box :pensioner
+  = f.collection_select :disability, Client.disabilities, :first, :last
 
   = f.text_field :monthly_income
 
@@ -38,7 +36,7 @@
 
   = f.text_field :work_position
 
-  = f.text_field :citizenship
+  = f.collection_select :citizenship, ISO3166::Country.all.sort_by { |x| x.name}, :alpha2, :name
 
   = f.text_field :registration_city
 
@@ -48,6 +46,8 @@
 
   = f.text_area :actual_address
 
+  = f.check_box :pensioner
   = f.check_box :reservist
+
 
   = f.submit 'Save', class: 'btn btn-success'
