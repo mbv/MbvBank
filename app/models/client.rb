@@ -60,4 +60,6 @@ class Client < ApplicationRecord
             :identification_number, :birth_place, :passport_issued_by, :passport_issue_date, :actual_city,
             :registration_address, :registration_city, :registration_address, :family_status, :citizenship, :disability,
             :pensioner, :reservist, presence: true
+  validates :passport_series, uniqueness: { scope: :passport_number}
+  validates :identification_number, uniqueness: true
 end
