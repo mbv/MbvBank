@@ -1,1 +1,7 @@
 @import "bootstrap";
+
+@import "bootstrap-datepicker";
+
+label.required:after {
+  content:" *";
+}

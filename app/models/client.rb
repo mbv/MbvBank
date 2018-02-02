@@ -41,4 +41,24 @@
 #
 
 class Client < ApplicationRecord
+  enum gender: {
+    male:   'male',
+    female: 'female',
+    other:  'other'
+  }
+  enum family_status: {
+    single:   'single',
+    married: 'married',
+    divorced: 'divorced',
+    widowed:  'widowed'
+  }
+  enum disability: {
+    healthy:   'healthy',
+    disabled: 'disabled'
+  }
+
+  validates :first_name, :last_name, :middle_name, :birth_date, :gender, :passport_series, :passport_number,
+            :identification_number, :birth_place, :passport_issued_by, :passport_issue_date, :actual_city,
+            :registration_address, :registration_city, :registration_address, :family_status, :citizenship, :disability,
+            :pensioner, :reservist, presence: true
 end

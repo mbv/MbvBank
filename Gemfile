@@ -33,9 +33,12 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap'
 gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git', branch: 'master'
+gem 'bootstrap-datepicker-rails'
 gem 'jquery-rails'
 gem 'slim'
 gem 'slim-rails'
+
+gem 'responders'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
