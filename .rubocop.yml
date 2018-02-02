@@ -1,0 +1,69 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Max: 25
+
+Style/Documentation:
+  Enabled: false
+
+Style/Send:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true
+
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/ModuleFunction:
+  EnforcedStyle: extend_self
+
+Style/TrivialAccessors:
+  Enabled: false
+
+Lint/NestedMethodDefinition:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NotToNot:
+  EnforcedStyle: "to_not"
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/requests/*
+    - spec/routing/*
+
+AllCops:
+  Exclude:
+    - Gemfile
+    - bin/*
+  TargetRubyVersion: 2.4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
