@@ -1,0 +1,87 @@
+= form_for @client do |f|
+  - if @client.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@client.errors.count, "error")} prohibited this client from being saved:"
+      ul
+        - @client.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :middle_name
+    = f.text_field :middle_name
+  .field
+    = f.label :birth_date
+    = f.date_select :birth_date
+  .field
+    = f.label :birth_place
+    = f.text_area :birth_place
+  .field
+    = f.label :gender
+    = f.text_field :gender
+  .field
+    = f.label :passport_series
+    = f.text_field :passport_series
+  .field
+    = f.label :passport_number
+    = f.text_field :passport_number
+  .field
+    = f.label :identification_number
+    = f.text_field :identification_number
+  .field
+    = f.label :passport_issued_by
+    = f.text_field :passport_issued_by
+  .field
+    = f.label :passport_issue_date
+    = f.date_select :passport_issue_date
+  .field
+    = f.label :home_phone_number
+    = f.text_field :home_phone_number
+  .field
+    = f.label :mobile_phone_number
+    = f.text_field :mobile_phone_number
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :family_status
+    = f.text_field :family_status
+  .field
+    = f.label :disability
+    = f.text_field :disability
+  .field
+    = f.label :pensioner
+    = f.check_box :pensioner
+  .field
+    = f.label :monthly_income
+    = f.text_field :monthly_income
+  .field
+    = f.label :work_place
+    = f.text_area :work_place
+  .field
+    = f.label :work_position
+    = f.text_field :work_position
+  .field
+    = f.label :citizenship
+    = f.text_field :citizenship
+  .field
+    = f.label :registration_city
+    = f.text_field :registration_city
+  .field
+    = f.label :registration_address
+    = f.text_area :registration_address
+  .field
+    = f.label :actual_city
+    = f.text_field :actual_city
+  .field
+    = f.label :actual_address
+    = f.text_area :actual_address
+  .field
+    = f.label :reservist
+    = f.check_box :reservist
+  .actions = f.submit

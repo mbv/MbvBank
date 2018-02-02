@@ -1,0 +1,84 @@
+p#notice = notice
+
+p
+  strong First name:
+  = @client.first_name
+p
+  strong Last name:
+  = @client.last_name
+p
+  strong Middle name:
+  = @client.middle_name
+p
+  strong Birth date:
+  = @client.birth_date
+p
+  strong Birth place:
+  = @client.birth_place
+p
+  strong Gender:
+  = @client.gender
+p
+  strong Passport series:
+  = @client.passport_series
+p
+  strong Passport number:
+  = @client.passport_number
+p
+  strong Identification number:
+  = @client.identification_number
+p
+  strong Passport issued by:
+  = @client.passport_issued_by
+p
+  strong Passport issue date:
+  = @client.passport_issue_date
+p
+  strong Home phone number:
+  = @client.home_phone_number
+p
+  strong Mobile phone number:
+  = @client.mobile_phone_number
+p
+  strong Email:
+  = @client.email
+p
+  strong Family status:
+  = @client.family_status
+p
+  strong Disability:
+  = @client.disability
+p
+  strong Pensioner:
+  = @client.pensioner
+p
+  strong Monthly income:
+  = @client.monthly_income
+p
+  strong Work place:
+  = @client.work_place
+p
+  strong Work position:
+  = @client.work_position
+p
+  strong Citizenship:
+  = @client.citizenship
+p
+  strong Registration city:
+  = @client.registration_city
+p
+  strong Registration address:
+  = @client.registration_address
+p
+  strong Actual city:
+  = @client.actual_city
+p
+  strong Actual address:
+  = @client.actual_address
+p
+  strong Reservist:
+  = @client.reservist
+
+=> link_to 'Edit', edit_client_path(@client)
+'|
+=< link_to 'Back', clients_path

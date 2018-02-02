@@ -1,0 +1,71 @@
+h1 Listing clients
+
+table
+  thead
+    tr
+      th First name
+      th Last name
+      th Middle name
+      th Birth date
+      th Birth place
+      th Gender
+      th Passport series
+      th Passport number
+      th Identification number
+      th Passport issued by
+      th Passport issue date
+      th Home phone number
+      th Mobile phone number
+      th Email
+      th Family status
+      th Disability
+      th Pensioner
+      th Monthly income
+      th Work place
+      th Work position
+      th Citizenship
+      th Registration city
+      th Registration address
+      th Actual city
+      th Actual address
+      th Reservist
+      th
+      th
+      th
+
+  tbody
+    - @clients.each do |client|
+      tr
+        td = client.first_name
+        td = client.last_name
+        td = client.middle_name
+        td = client.birth_date
+        td = client.birth_place
+        td = client.gender
+        td = client.passport_series
+        td = client.passport_number
+        td = client.identification_number
+        td = client.passport_issued_by
+        td = client.passport_issue_date
+        td = client.home_phone_number
+        td = client.mobile_phone_number
+        td = client.email
+        td = client.family_status
+        td = client.disability
+        td = client.pensioner
+        td = client.monthly_income
+        td = client.work_place
+        td = client.work_position
+        td = client.citizenship
+        td = client.registration_city
+        td = client.registration_address
+        td = client.actual_city
+        td = client.actual_address
+        td = client.reservist
+        td = link_to 'Show', client
+        td = link_to 'Edit', edit_client_path(client)
+        td = link_to 'Destroy', client, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Client', new_client_path

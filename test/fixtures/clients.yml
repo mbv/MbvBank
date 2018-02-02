@@ -1,0 +1,97 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id                    :integer          not null, primary key
+#  first_name            :string
+#  last_name             :string
+#  middle_name           :string
+#  birth_date            :date
+#  birth_place           :text
+#  gender                :string           default("male")
+#  passport_series       :string
+#  passport_number       :string
+#  identification_number :string
+#  passport_issued_by    :string
+#  passport_issue_date   :date
+#  home_phone_number     :string
+#  mobile_phone_number   :string
+#  email                 :string
+#  family_status         :string           default("single")
+#  disability            :string           default("healthy")
+#  pensioner             :boolean
+#  monthly_income        :decimal(19, 2)
+#  work_place            :text
+#  work_position         :string
+#  citizenship           :string           default("by")
+#  registration_city     :string
+#  registration_address  :text
+#  actual_city           :string
+#  actual_address        :text
+#  reservist             :boolean
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
+# Indexes
+#
+#  index_clients_on_identification_number                (identification_number) UNIQUE
+#  index_clients_on_passport_series_and_passport_number  (passport_series,passport_number) UNIQUE
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  birth_date: 2018-02-02
+  birth_place: MyText
+  gender: MyString
+  passport_series: MyString
+  passport_number: MyString
+  identification_number: MyString
+  passport_issued_by: MyString
+  passport_issue_date: 2018-02-02
+  home_phone_number: MyString
+  mobile_phone_number: MyString
+  email: MyString
+  family_status: MyString
+  disability: MyString
+  pensioner: false
+  monthly_income: 9.99
+  work_place: MyText
+  work_position: MyString
+  citizenship: MyString
+  registration_city: MyString
+  registration_address: MyText
+  actual_city: MyString
+  actual_address: MyText
+  reservist: false
+
+two:
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  birth_date: 2018-02-02
+  birth_place: MyText
+  gender: MyString
+  passport_series: MyString
+  passport_number: MyString
+  identification_number: MyString
+  passport_issued_by: MyString
+  passport_issue_date: 2018-02-02
+  home_phone_number: MyString
+  mobile_phone_number: MyString
+  email: MyString
+  family_status: MyString
+  disability: MyString
+  pensioner: false
+  monthly_income: 9.99
+  work_place: MyText
+  work_position: MyString
+  citizenship: MyString
+  registration_city: MyString
+  registration_address: MyText
+  actual_city: MyString
+  actual_address: MyText
+  reservist: false
