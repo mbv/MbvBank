@@ -38,11 +38,11 @@
 
   = f.collection_select :citizenship, ISO3166::Country.all.sort_by { |x| x.name}, :alpha2, :name
 
-  = f.text_field :registration_city
+  = f.collection_select :registration_city, Client::CITIES, :first, :last
 
   = f.text_area :registration_address
 
-  = f.text_field :actual_city
+  = f.collection_select :actual_city, Client::CITIES, :first, :last
 
   = f.text_area :actual_address
 
