@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  deposit: one
+  start_date: 2018-02-04
+  end_date: 2018-02-04
+  main_account: 1
+  current_account: 1
+  closed: false
+
+two:
+  client: two
+  deposit: two
+  start_date: 2018-02-04
+  end_date: 2018-02-04
+  main_account: 1
+  current_account: 1
+  closed: false

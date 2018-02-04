@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Client:
+  = @deposit_contract.client
+p
+  strong Deposit:
+  = @deposit_contract.deposit
+p
+  strong Start date:
+  = @deposit_contract.start_date
+p
+  strong End date:
+  = @deposit_contract.end_date
+p
+  strong Main account:
+  = @deposit_contract.main_account
+p
+  strong Current account:
+  = @deposit_contract.current_account
+p
+  strong Closed:
+  = @deposit_contract.closed
+
+=> link_to 'Edit', edit_deposit_contract_path(@deposit_contract)
+'|
+=< link_to 'Back', deposit_contracts_path

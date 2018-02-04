@@ -1,0 +1,33 @@
+h1 Listing deposit_contracts
+
+table
+  thead
+    tr
+      th Client
+      th Deposit
+      th Start date
+      th End date
+      th Main account
+      th Current account
+      th Closed
+      th
+      th
+      th
+
+  tbody
+    - @deposit_contracts.each do |deposit_contract|
+      tr
+        td = deposit_contract.client
+        td = deposit_contract.deposit
+        td = deposit_contract.start_date
+        td = deposit_contract.end_date
+        td = deposit_contract.main_account
+        td = deposit_contract.current_account
+        td = deposit_contract.closed
+        td = link_to 'Show', deposit_contract
+        td = link_to 'Edit', edit_deposit_contract_path(deposit_contract)
+        td = link_to 'Destroy', deposit_contract, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Deposit contract', new_deposit_contract_path
