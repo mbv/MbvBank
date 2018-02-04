@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: clients
@@ -9,7 +10,7 @@
 #  middle_name           :string
 #  birth_date            :date
 #  birth_place           :text
-#  gender                :string           default("male")
+#  gender                :string           default(NULL)
 #  passport_series       :string
 #  passport_number       :string
 #  identification_number :string
@@ -18,8 +19,8 @@
 #  home_phone_number     :string
 #  mobile_phone_number   :string
 #  email                 :string
-#  family_status         :string           default("single")
-#  disability            :string           default("healthy")
+#  family_status         :string           default(NULL)
+#  disability            :string           default(NULL)
 #  pensioner             :boolean
 #  monthly_income        :decimal(19, 2)
 #  work_place            :text
