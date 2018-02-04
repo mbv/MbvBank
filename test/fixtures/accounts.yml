@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  name: MyString
+  activity: MyString
+  client: one
+  real_amount: 1
+  amount: 1
+  currency: one
+  closed: false
+  pin: MyString
+
+two:
+  number: MyString
+  name: MyString
+  activity: MyString
+  client: two
+  real_amount: 1
+  amount: 1
+  currency: two
+  closed: false
+  pin: MyString

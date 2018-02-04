@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deposit_type: one
+  currency: one
+  months: MyString
+  rate: MyString
+
+two:
+  deposit_type: two
+  currency: two
+  months: MyString
+  rate: MyString
