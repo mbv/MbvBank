@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DepositContractsController < ApplicationController
-  before_action :set_deposit_contract, only: [:show, :edit, :update, :destroy]
+  before_action :set_deposit_contract, only: %i[show edit update destroy]
 
   # GET /deposit_contracts
   # GET /deposit_contracts.json
@@ -9,8 +11,7 @@ class DepositContractsController < ApplicationController
 
   # GET /deposit_contracts/1
   # GET /deposit_contracts/1.json
-  def show
-  end
+  def show; end
 
   # GET /deposit_contracts/new
   def new
@@ -18,8 +19,7 @@ class DepositContractsController < ApplicationController
   end
 
   # GET /deposit_contracts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /deposit_contracts
   # POST /deposit_contracts.json
@@ -62,13 +62,14 @@ class DepositContractsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_deposit_contract
-      @deposit_contract = DepositContract.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def deposit_contract_params
-      params.require(:deposit_contract).permit(:client_id, :deposit_id, :start_date, :end_date, :main_account, :current_account, :closed)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_deposit_contract
+    @deposit_contract = DepositContract.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def deposit_contract_params
+    params.require(:deposit_contract).permit(:client_id, :deposit_id, :start_date, :end_date, :main_account, :current_account, :closed)
+  end
 end
