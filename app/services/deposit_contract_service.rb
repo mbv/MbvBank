@@ -10,7 +10,7 @@ class DepositContractService
     deposit_contract.start_date = Time.zone.today
     deposit_contract.end_date   = deposit_contract.deposit.months.month.from_now
 
-
+    TransactionService.new.on_create_deposit_contract(deposit_contract, params[:amount])
 
     deposit_contract.save
     deposit_contract

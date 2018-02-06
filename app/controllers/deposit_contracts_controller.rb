@@ -3,19 +3,25 @@
 class DepositContractsController < ApplicationController
   before_action :set_deposit_contract, only: %i[show edit update destroy]
 
+  respond_to :html
+
   # GET /deposit_contracts
   # GET /deposit_contracts.json
   def index
     @deposit_contracts = DepositContract.all
+    render layout: 'application_fluid'
   end
 
   # GET /deposit_contracts/1
   # GET /deposit_contracts/1.json
-  def show; end
+  def show
+    respond_with @deposit_contract
+  end
 
   # GET /deposit_contracts/new
   def new
     @deposit_contract = DepositContract.new
+    respond_with @deposit_contract
   end
 
   # GET /deposit_contracts/1/edit
@@ -24,41 +30,23 @@ class DepositContractsController < ApplicationController
   # POST /deposit_contracts
   # POST /deposit_contracts.json
   def create
-    @deposit_contract = DepositContract.new(deposit_contract_params)
-
-    respond_to do |format|
-      if @deposit_contract.save
-        format.html { redirect_to @deposit_contract, notice: 'Deposit contract was successfully created.' }
-        format.json { render :show, status: :created, location: @deposit_contract }
-      else
-        format.html { render :new }
-        format.json { render json: @deposit_contract.errors, status: :unprocessable_entity }
-      end
-    end
+    @deposit_contract = DepositContractService.new.create(deposit_contract_params)
+    respond_with @deposit_contract
   end
 
   # PATCH/PUT /deposit_contracts/1
   # PATCH/PUT /deposit_contracts/1.json
   def update
-    respond_to do |format|
-      if @deposit_contract.update(deposit_contract_params)
-        format.html { redirect_to @deposit_contract, notice: 'Deposit contract was successfully updated.' }
-        format.json { render :show, status: :ok, location: @deposit_contract }
-      else
-        format.html { render :edit }
-        format.json { render json: @deposit_contract.errors, status: :unprocessable_entity }
-      end
-    end
+    @deposit_contract.update(deposit_contract_params)
+
+    respond_with @deposit_contract
   end
 
   # DELETE /deposit_contracts/1
   # DELETE /deposit_contracts/1.json
   def destroy
     @deposit_contract.destroy
-    respond_to do |format|
-      format.html { redirect_to deposit_contracts_url, notice: 'Deposit contract was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_with @deposit_contract
   end
 
   private
