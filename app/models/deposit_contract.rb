@@ -30,4 +30,12 @@ class DepositContract < ApplicationRecord
   belongs_to :deposit
   belongs_to :main_account, class_name: 'Account'
   belongs_to :current_account, class_name: 'Account'
+
+  def interest_amount_per_day
+    main_account.amount * deposit.rate / 100 / days_in_a_year
+  end
+
+  def days_in_a_year
+    Time.zone.today.end_of_year.yday
+  end
 end
