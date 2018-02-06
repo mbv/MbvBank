@@ -16,6 +16,14 @@ class DepositContractService
     deposit_contract
   end
 
+  def revoke(deposit_contract)
+    TransactionService.new.on_revoke_deposit_contract(deposit_contract)
+
+    deposit_contract.current_account.update closed: true
+    deposit_contract.main_account.update closed: true
+
+    deposit_contract.update closed: true
+  end
 
   private def create_deposit_account(deposit_contract, params = {})
     account = Account.create({ client:       deposit_contract.client,
