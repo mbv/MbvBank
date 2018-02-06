@@ -5,6 +5,21 @@ currency_usd = Currency.create(code: 'USD', name: 'Доллар США')
 currency_eur = Currency.create(code: 'EUR', name: 'Евро')
 currency_rub = Currency.create(code: 'RUB', name: 'Российский рубль')
 
+[currency_byn, currency_usd, currency_eur, currency_rub].each do |currency|
+Account.create(currency:     currency,
+               account_type: :bank_cashbox,
+               activity:     :active,
+               number: "#{Account::ACCOUNT_NUMBER_PREFIX[:bank_cashbox]}000000001",
+               name: "Касса #{currency.code.upcase}")
+
+Account.create(currency:     currency,
+               account_type: :bank_development_fund,
+               activity:     :passive,
+               number: "#{Account::ACCOUNT_NUMBER_PREFIX[:bank_development_fund]}000000001",
+               name: "Фонд развития банка #{currency.code.upcase}",
+               real_amount: 100_000)
+end
+
 # https://tb.by/individuals/deposits-savings/deposits/
 dt_max = DepositType.create(name: 'Безотзывный депозит «Максимум»', revocable: false)
 

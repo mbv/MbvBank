@@ -35,14 +35,14 @@ class Account < ApplicationRecord
   enum account_type: {
     deposit:               'Deposit',
     credit:                'Credit',
-    cashbox:               'Cashbox',
+    bank_cashbox:          'Cashbox',
     bank_development_fund: 'Bank Development Fund'
   }
 
   ACCOUNT_NUMBER_PREFIX = {
     deposit:               '3014',
     credit:                '2400',
-    cashbox:               '1010',
+    bank_cashbox:          '1010',
     bank_development_fund: '7327'
   }.freeze
 
