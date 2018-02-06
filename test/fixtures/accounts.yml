@@ -7,8 +7,8 @@
 #  name         :string
 #  activity     :string
 #  client_id    :integer
-#  real_amount  :decimal(19, 2)
-#  amount       :decimal(19, 2)
+#  real_amount  :decimal(19, 2)   default(0.0), not null
+#  amount       :decimal(19, 2)   default(0.0), not null
 #  currency_id  :integer
 #  closed       :boolean
 #  pin          :string

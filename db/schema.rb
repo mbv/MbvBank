@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206081143) do
+ActiveRecord::Schema.define(version: 20180206134856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20180206081143) do
     t.string "name"
     t.string "activity"
     t.bigint "client_id"
-    t.decimal "real_amount", precision: 19, scale: 2
-    t.decimal "amount", precision: 19, scale: 2
+    t.decimal "real_amount", precision: 19, scale: 2, default: "0.0", null: false
+    t.decimal "amount", precision: 19, scale: 2, default: "0.0", null: false
     t.bigint "currency_id"
     t.boolean "closed"
     t.string "pin"
