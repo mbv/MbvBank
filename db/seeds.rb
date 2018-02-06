@@ -31,36 +31,36 @@ dt_new_v = DepositType.create(name: 'Отзывный депозит «Нова�
 dt_profitable = DepositType.create(name: 'Отзывный депозит «Выгодный»', revocable: true)
 
 
-Deposit.create(deposit_type: dt_max, curerncy: currency_byn, months: 12, rate: 8)
+Deposit.create(deposit_type: dt_max, currency: currency_byn, months: 12, rate: 8)
 
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_byn, months: 2, rate: 3)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_byn, months: 3, rate: 4)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_byn, months: 6, rate: 6)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_byn, months: 12, rate: 6.5)
+Deposit.create(deposit_type: dt_new_v, currency: currency_byn, months: 2, rate: 3)
+Deposit.create(deposit_type: dt_new_v, currency: currency_byn, months: 3, rate: 4)
+Deposit.create(deposit_type: dt_new_v, currency: currency_byn, months: 6, rate: 6)
+Deposit.create(deposit_type: dt_new_v, currency: currency_byn, months: 12, rate: 6.5)
 
-Deposit.create(deposit_type: dt_new, curerncy: currency_usd, months: 24, rate: 1.6)
-Deposit.create(deposit_type: dt_our_feature, curerncy: currency_usd, months: 60, rate: 2.4)
-Deposit.create(deposit_type: dt_great, curerncy: currency_usd, months: 12, rate: 1.1)
+Deposit.create(deposit_type: dt_new, currency: currency_usd, months: 24, rate: 1.6)
+Deposit.create(deposit_type: dt_our_feature, currency: currency_usd, months: 60, rate: 2.4)
+Deposit.create(deposit_type: dt_great, currency: currency_usd, months: 12, rate: 1.1)
 
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_usd, months: 1, rate: 0.3)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_usd, months: 3, rate: 0.5)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_usd, months: 6, rate: 1)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_usd, months: 12, rate: 1)
-
-
-Deposit.create(deposit_type: dt_new, curerncy: currency_eur, months: 24, rate: 1)
-Deposit.create(deposit_type: dt_our_feature, curerncy: currency_eur, months: 60, rate: 1.7)
-Deposit.create(deposit_type: dt_great, curerncy: currency_eur, months: 12, rate: 0.6)
-
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_eur, months: 1, rate: 0.1)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_eur, months: 3, rate: 0.2)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_eur, months: 6, rate: 0.5)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_eur, months: 12, rate: 0.5)
+Deposit.create(deposit_type: dt_new_v, currency: currency_usd, months: 1, rate: 0.3)
+Deposit.create(deposit_type: dt_new_v, currency: currency_usd, months: 3, rate: 0.5)
+Deposit.create(deposit_type: dt_new_v, currency: currency_usd, months: 6, rate: 1)
+Deposit.create(deposit_type: dt_new_v, currency: currency_usd, months: 12, rate: 1)
 
 
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_rub, months: 2, rate: 4)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_rub, months: 3, rate: 4.5)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_rub, months: 6, rate: 5)
-Deposit.create(deposit_type: dt_new_v, curerncy: currency_rub, months: 12, rate: 5)
+Deposit.create(deposit_type: dt_new, currency: currency_eur, months: 24, rate: 1)
+Deposit.create(deposit_type: dt_our_feature, currency: currency_eur, months: 60, rate: 1.7)
+Deposit.create(deposit_type: dt_great, currency: currency_eur, months: 12, rate: 0.6)
 
-Deposit.create(deposit_type: dt_profitable, curerncy: currency_rub, months: 2, rate: 4)
+Deposit.create(deposit_type: dt_new_v, currency: currency_eur, months: 1, rate: 0.1)
+Deposit.create(deposit_type: dt_new_v, currency: currency_eur, months: 3, rate: 0.2)
+Deposit.create(deposit_type: dt_new_v, currency: currency_eur, months: 6, rate: 0.5)
+Deposit.create(deposit_type: dt_new_v, currency: currency_eur, months: 12, rate: 0.5)
+
+
+Deposit.create(deposit_type: dt_new_v, currency: currency_rub, months: 2, rate: 4)
+Deposit.create(deposit_type: dt_new_v, currency: currency_rub, months: 3, rate: 4.5)
+Deposit.create(deposit_type: dt_new_v, currency: currency_rub, months: 6, rate: 5)
+Deposit.create(deposit_type: dt_new_v, currency: currency_rub, months: 12, rate: 5)
+
+Deposit.create(deposit_type: dt_profitable, currency: currency_rub, months: 2, rate: 4)
