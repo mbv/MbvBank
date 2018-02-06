@@ -12,11 +12,11 @@ class TransactionService
 
   def make_transaction(source_account, destination_account, amount)
     Transaction.create(account: source_account, amount: -amount)
-    source_account.amount -= amount
+    source_account.real_amount -= amount
     source_account.save
 
     Transaction.create(account: destination_account, amount: amount)
-    destination_account.amount += amount
+    destination_account.real_amount += amount
     destination_account.save
   end
 end
