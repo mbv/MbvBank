@@ -70,6 +70,7 @@ class DepositContractsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def deposit_contract_params
-    params.require(:deposit_contract).permit(:client_id, :deposit_id, :start_date, :end_date, :main_account, :current_account, :closed)
+    params.require(:deposit_contract).permit(:client_id, :deposit_id, :start_date, :end_date, :main_account,
+                                             :current_account, :closed)
   end
 end

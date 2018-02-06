@@ -1,21 +1,21 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: accounts
 #
-#  id          :integer          not null, primary key
-#  number      :string
-#  name        :string
-#  activity    :string
-#  client_id   :integer
-#  real_amount :decimal(19, 2)
-#  amount      :decimal(19, 2)
-#  currency_id :integer
-#  closed      :boolean
-#  pin         :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  number       :string
+#  name         :string
+#  activity     :string
+#  client_id    :integer
+#  real_amount  :decimal(19, 2)
+#  amount       :decimal(19, 2)
+#  currency_id  :integer
+#  closed       :boolean
+#  pin          :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  account_type :string
 #
 # Indexes
 #
