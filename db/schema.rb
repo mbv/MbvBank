@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206074809) do
+ActiveRecord::Schema.define(version: 20180206081143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20180206074809) do
     t.bigint "deposit_id"
     t.date "start_date"
     t.date "end_date"
-    t.integer "main_account"
-    t.integer "current_account"
+    t.integer "main_account_id"
+    t.integer "current_account_id"
     t.boolean "closed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,16 +2,16 @@
 #
 # Table name: deposit_contracts
 #
-#  id              :integer          not null, primary key
-#  client_id       :integer
-#  deposit_id      :integer
-#  start_date      :date
-#  end_date        :date
-#  main_account    :integer
-#  current_account :integer
-#  closed          :boolean
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  client_id          :integer
+#  deposit_id         :integer
+#  start_date         :date
+#  end_date           :date
+#  main_account_id    :integer
+#  current_account_id :integer
+#  closed             :boolean
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 # Indexes
 #
