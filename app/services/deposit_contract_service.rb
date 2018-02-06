@@ -29,7 +29,9 @@ class DepositContractService
     account = Account.create({ client:       deposit_contract.client,
                                currency:     deposit_contract.currency,
                                account_type: :deposit,
-                               activity:     :passive }.merge(params))
+                               activity:     :passive,
+                               amount:       0,
+                               real_amount:  0 }.merge(params))
     account.generate_number_and_pin
     account
   end
