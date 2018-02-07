@@ -1,0 +1,9 @@
+.stat_accounts
+  - @bank_fund_accounts.each do |account|
+    .currency_name
+      = account.currency.name
+    .currency_amount
+      = account.real_amount
+  = bootstrap_form_tag(url: { controller: :bank, action: :submit_day }, method: :post) do |f|
+    = f.submit 'Submit Day', class: 'btn btn-success'
+

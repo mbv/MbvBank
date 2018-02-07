@@ -29,7 +29,7 @@
 #
 
 class Account < ApplicationRecord
-  belongs_to :client
+  belongs_to :client, optional: true
   belongs_to :currency
 
   enum account_type: {

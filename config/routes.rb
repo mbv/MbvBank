@@ -3,5 +3,7 @@
 Rails.application.routes.draw do
   resources :deposit_contracts
   resources :clients
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'bank/stats', to: 'bank#stats'
+  post 'bank/submit_day', to: 'bank#submit_day'
 end
