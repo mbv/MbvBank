@@ -20,6 +20,7 @@ class DepositContractsController < ApplicationController
 
   # GET /deposit_contracts/new
   def new
+    @client = Client.find(params[:client_id])
     @deposit_contract = DepositContract.new
     respond_with @deposit_contract
   end
@@ -47,6 +48,10 @@ class DepositContractsController < ApplicationController
   def destroy
     @deposit_contract.destroy
     respond_with @deposit_contract
+  end
+
+  def client
+    @client ||= Client.find(params[:client_id])
   end
 
   private
