@@ -2,26 +2,26 @@ p#notice = notice
 
 p
   strong Client:
-  = @deposit_contract.client
+  = @_resource.client
 p
   strong Deposit:
-  = @deposit_contract.deposit
+  = @_resource.deposit
 p
   strong Start date:
-  = @deposit_contract.start_date
+  = @_resource.start_date
 p
   strong End date:
-  = @deposit_contract.end_date
+  = @_resource.end_date
 p
   strong Main account:
-  = @deposit_contract.main_account
+  = @_resource.main_account
 p
   strong Current account:
-  = @deposit_contract.current_account
+  = @_resource.current_account
 p
   strong Closed:
-  = @deposit_contract.closed
+  = @_resource.closed
 
-=> link_to 'Edit', edit_deposit_contract_path(@deposit_contract)
+=> link_to 'Edit', edit_client_deposit_contract_path(@_client, @_resource)
 '|
-=< link_to 'Back', deposit_contracts_path
+=< link_to 'Back', client_deposit_contracts_path

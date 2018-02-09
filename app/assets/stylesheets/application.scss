@@ -2,6 +2,8 @@
 
 @import "bootstrap-datepicker";
 
+@import "deposit_contracts";
+
 label.required:after {
   content:" *";
 }

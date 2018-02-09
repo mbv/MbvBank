@@ -1,9 +1,21 @@
-= bootstrap_form_with(model: [@client, @deposit_contract], inline_errors: true, local: true) do |f|
-  - if @deposit_contract.errors.any?
+= bootstrap_form_with(model: [client, resource], inline_errors: true, local: true) do |f|
+  - if resource.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@deposit_contract.errors.count, "error")} prohibited this deposit_contract from being saved:"
+      h2 = "#{pluralize(resource.errors.count, "error")} prohibited this deposit_contract from being saved:"
       ul
-        - @deposit_contract.errors.full_messages.each do |message|
+        - resource.errors.full_messages.each do |message|
           li = message
-  = f.collection_select :deposit, Deposit.includes(:deposit_type).all, :id, :name
+  table.table.table-striped.table-bordered
+    tbody
+      tr
+        td.row-name Full Name:
+        td = client.full_name
+      tr
+        td.row-name Passport:
+        td = client.full_passport
+      tr
+        td.row-name Identification number:
+        td = client.identification_number
+  = f.collection_select :deposit_id, Deposit.includes(:deposit_type, :currency).all, :id, :name
+  = f.text_field :amount
   .actions = f.submit

@@ -1,8 +1,8 @@
 h1 Editing deposit_contract
 
-== render 'form'
+== render 'form', client: @_client, resource: @_resource
 
-=> link_to 'Show', @deposit_contract
+=> link_to 'Show', @_resource
 '|
-=< link_to 'Back', deposit_contracts_path
+=< link_to 'Back', client_deposit_contracts_path
 
