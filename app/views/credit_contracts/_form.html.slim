@@ -17,7 +17,7 @@
         td.row-name Identification number:
         td = client.identification_number
 
-  = f.collection_select :deposit_id, Credit.includes(:credit_type, :currency).all, :id, :name
+  = f.collection_select :credit_id, Credit.includes(:credit_type, :currency).all, :id, :name
   = f.collection_select :contract_type, CreditContract.contract_types, :first, :last
   = f.text_field :amount
   = f.submit 'Save', class: 'btn btn-success'

@@ -57,7 +57,6 @@ class CreditContractsController < ApplicationController
   end
 
   def credit_contract_params
-    params.require(:credit_contract).permit(:client_id, :credit_id, :contract_type, :start_date, :end_date,
-                                            :main_account_id, :current_account_id, :next_payment_id, :closed)
+    params.require(:credit_contract).permit(:client_id, :credit_id, :contract_type, :amount)
   end
 end
