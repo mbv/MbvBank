@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206134856) do
+ActiveRecord::Schema.define(version: 20180209130107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,45 @@ ActiveRecord::Schema.define(version: 20180206134856) do
     t.index ["passport_series", "passport_number"], name: "index_clients_on_passport_series_and_passport_number", unique: true
   end
 
+  create_table "credit_contracts", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "credit_id"
+    t.string "contract_type"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "main_account_id"
+    t.integer "current_account_id"
+    t.integer "next_payment_id"
+    t.boolean "closed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_credit_contracts_on_client_id"
+    t.index ["credit_id"], name: "index_credit_contracts_on_credit_id"
+  end
+
+  create_table "credit_payments", force: :cascade do |t|
+    t.bigint "credit_contract_id"
+    t.date "date"
+    t.decimal "amount", precision: 19, scale: 2
+    t.boolean "paid", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["credit_contract_id"], name: "index_credit_payments_on_credit_contract_id"
+  end
+
+  create_table "credit_types", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "credits", force: :cascade do |t|
+    t.bigint "credit_type_id"
+    t.bigint "currency_id"
+    t.decimal "amount", precision: 19, scale: 2
+    t.boolean "paid", default: false, null: false
+    t.index ["credit_type_id"], name: "index_credits_on_credit_type_id"
+    t.index ["currency_id"], name: "index_credits_on_currency_id"
+  end
+
   create_table "currencies", force: :cascade do |t|
     t.string "code"
     t.string "name"
@@ -110,6 +149,11 @@ ActiveRecord::Schema.define(version: 20180206134856) do
 
   add_foreign_key "accounts", "clients"
   add_foreign_key "accounts", "currencies"
+  add_foreign_key "credit_contracts", "clients"
+  add_foreign_key "credit_contracts", "credits"
+  add_foreign_key "credit_payments", "credit_contracts"
+  add_foreign_key "credits", "credit_types"
+  add_foreign_key "credits", "currencies"
   add_foreign_key "deposit_contracts", "clients"
   add_foreign_key "deposit_contracts", "deposits"
   add_foreign_key "deposits", "currencies"
