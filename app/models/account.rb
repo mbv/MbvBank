@@ -47,8 +47,9 @@ class Account < ApplicationRecord
   }.freeze
 
   enum activity: {
-    active:  'Active',
-    passive: 'Passive'
+    active:         'Active',
+    passive:        'Passive',
+    active_passive: 'Active-Passive'
   }
 
   def generate_number_and_pin
