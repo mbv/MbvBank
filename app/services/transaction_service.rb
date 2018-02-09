@@ -2,8 +2,10 @@
 
 class TransactionService
   def on_create_deposit_contract(deposit_contract, amount)
-    bank_cashbox_account = Account.find_by(account_type: :bank_cashbox, currency: deposit_contract.currency)
-    bank_fund_account = Account.find_by(account_type: :bank_development_fund, currency: deposit_contract.currency)
+    bank_cashbox_account = Account.find_by(account_type: :bank_cashbox,
+                                           currency: deposit_contract.deposit.currency)
+    bank_fund_account = Account.find_by(account_type: :bank_development_fund,
+                                        currency: deposit_contract.deposit.currency)
 
     bank_cashbox_account.real_amount += amount # will be saved in transaction, imitation of depositing money
     make_transaction(bank_cashbox_account, deposit_contract.main_account, amount)
@@ -11,8 +13,10 @@ class TransactionService
   end
 
   def on_revoke_deposit_contract(deposit_contract)
-    bank_cashbox_account = Account.find_by(account_type: :bank_cashbox, currency: deposit_contract.currency)
-    bank_fund_account = Account.find_by(account_type: :bank_development_fund, currency: deposit_contract.currency)
+    bank_cashbox_account = Account.find_by(account_type: :bank_cashbox,
+                                           currency: deposit_contract.deposit.currency)
+    bank_fund_account = Account.find_by(account_type: :bank_development_fund,
+                                        currency: deposit_contract.deposit.currency)
 
     deposit_amount = deposit_contract.main_account.amount
     make_transaction(bank_fund_account, deposit_contract.main_account, deposit_amount)
