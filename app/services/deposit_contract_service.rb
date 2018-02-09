@@ -1,16 +1,22 @@
 # frozen_string_literal: true
 
 class DepositContractService
-  def create(params)
+  def create(client, params)
     deposit_contract = DepositContract.new(params)
 
-    deposit_contract.current_account = create_deposit_account(deposit_contract, amount: params[:amount])
-    deposit_contract.main_account    = create_deposit_account(deposit_contract)
+    deposit_contract.client = client
 
-    deposit_contract.start_date = Time.zone.today
-    deposit_contract.end_date   = deposit_contract.deposit.months.month.from_now
+    return deposit_contract unless deposit_contract.valid?
 
-    TransactionService.new.on_create_deposit_contract(deposit_contract, params[:amount])
+    deposit_contract.amount = deposit_contract.amount.to_d
+    deposit_contract.assign_attributes(current_account: create_deposit_account(deposit_contract),
+                                       main_account: create_deposit_account(deposit_contract,
+                                                                            amount: deposit_contract.amount),
+                                       start_date: Time.zone.today,
+                                       end_date: deposit_contract.deposit.months.month.from_now,
+                                       closed: false)
+
+    TransactionService.new.on_create_deposit_contract(deposit_contract, deposit_contract.amount)
 
     deposit_contract.save
     deposit_contract
@@ -27,7 +33,7 @@ class DepositContractService
 
   private def create_deposit_account(deposit_contract, params = {})
     account = Account.create({ client:       deposit_contract.client,
-                               currency:     deposit_contract.currency,
+                               currency:     deposit_contract.deposit.currency,
                                account_type: :deposit,
                                activity:     :passive,
                                amount:       0,
