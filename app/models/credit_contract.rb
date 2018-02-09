@@ -45,7 +45,7 @@ class CreditContract < ApplicationRecord
   def can_borrow_amount
     bank_fund_account = Account.find_by(account_type: :bank_development_fund,
                                         currency:     credit.currency)
-    return if amount.blank?
+    return if errors.present?
     errors.add(:amount, "can't borrow all bank money") if amount.to_d > bank_fund_account.real_amount
   end
 end
