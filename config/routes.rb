@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root 'clients#index'
+
   resources :clients do
     resources :deposit_contracts
   end
