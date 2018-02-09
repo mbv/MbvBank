@@ -16,7 +16,8 @@ class CreditContractService
                                       end_date:        credit_contract.credit.months.month.from_now,
                                       closed:          false)
 
-    TransactionService.new.on_create_deposit_contract(credit_contract, credit_contract.amount)
+    TransactionService.new(credit_contract.credit.currency)
+      .on_create_credit_contract(credit_contract, credit_contract.amount)
 
     credit_contract.save
     credit_contract

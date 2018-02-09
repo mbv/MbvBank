@@ -16,14 +16,16 @@ class DepositContractService
                                        end_date: deposit_contract.deposit.months.month.from_now,
                                        closed: false)
 
-    TransactionService.new.on_create_deposit_contract(deposit_contract, deposit_contract.amount)
+    TransactionService.new(deposit_contract.deposit.currency)
+      .on_create_deposit_contract(deposit_contract, deposit_contract.amount)
 
     deposit_contract.save
     deposit_contract
   end
 
   def revoke(deposit_contract)
-    TransactionService.new.on_revoke_deposit_contract(deposit_contract)
+    TransactionService.new(deposit_contract.deposit.currency)
+      .on_revoke_deposit_contract(deposit_contract)
 
     deposit_contract.current_account.update closed: true
     deposit_contract.main_account.update closed: true
