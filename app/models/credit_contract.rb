@@ -29,4 +29,24 @@
 class CreditContract < ApplicationRecord
   belongs_to :client
   belongs_to :credit
+  belongs_to :main_account, class_name: 'Account', optional: true
+  belongs_to :current_account, class_name: 'Account', optional: true
+
+  enum contract_type: {
+    annuity:        'Annuity',
+    differentiated: 'Differentiated'
+  }
+
+  attr_accessor :amount
+
+  validates :amount, numericality: true, presence: true
+  validate :can_borrow_amount
+
+  def can_borrow_amount
+    bank_fund_account = Account.find_by(account_type: :bank_development_fund,
+                                        currency:     credit.currency)
+    if amount > bank_fund_account.real_amount
+      errors.add(:expiration_date, "can't be in the past")
+    end
+  end
 end

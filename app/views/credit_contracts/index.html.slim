@@ -1,37 +1,40 @@
-h1 Listing credit_contracts
+h1 Listing Credit Contracts
+.client-info-table-container
+  table.table.table-bordered
+    tbody
+      tr
+        td.row-name Full Name:
+        td = @_client.full_name
+      tr
+        td.row-name Passport:
+        td = @_client.full_passport
+      tr
+        td.row-name Identification number:
+        td = @_client.identification_number
 
-table
+.row.justify-content-center
+  = link_to 'New Credit contract', new_client_credit_contract_path, class: 'btn btn-success mb-3'
+
+table.table.table-striped.table-bordered
   thead
     tr
-      th Client
       th Credit
-      th Contract type
-      th Start date
-      th End date
-      th Main account
-      th Current account
-      th Next payment
-      th Closed
-      th
-      th
-      th
+      th Main account number
+      th Current account number
+      th Currency
+      th Rate
+      th Opened on
+      th Expires on
+      th Balance
 
   tbody
-    - @credit_contracts.each do |credit_contract|
+    - @_resources.each do |credit_contract|
       tr
-        td = credit_contract.client
-        td = credit_contract.credit
-        td = credit_contract.contract_type
+        td = credit_contract.credit.credit_type.name
+        td = credit_contract.main_account.number
+        td = credit_contract.current_account.number
+        td = credit_contract.credit.currency.code.upcase
+        td = credit_contract.credit.rate
         td = credit_contract.start_date
         td = credit_contract.end_date
-        td = credit_contract.main_account_id
-        td = credit_contract.current_account_id
-        td = credit_contract.next_payment_id
-        td = credit_contract.closed
-        td = link_to 'Show', credit_contract
-        td = link_to 'Edit', edit_credit_contract_path(credit_contract)
-        td = link_to 'Destroy', credit_contract, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Credit contract', new_credit_contract_path
+        td = credit_contract.main_account.amount

@@ -42,6 +42,7 @@
 
 class Client < ApplicationRecord
   has_many :deposit_contracts, dependent: :destroy
+  has_many :credit_contracts, dependent: :destroy
 
   enum gender: {
     male:   'Male',

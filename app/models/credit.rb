@@ -22,4 +22,8 @@
 class Credit < ApplicationRecord
   belongs_to :credit_type
   belongs_to :currency
+
+  def name
+    "#{currency.code.upcase}, #{credit_type.name}: #{rate}% #{months} months"
+  end
 end
