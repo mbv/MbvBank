@@ -41,6 +41,8 @@
 #
 
 class Client < ApplicationRecord
+  has_many :deposit_contracts, dependent: :destroy
+
   enum gender: {
     male:   'Male',
     female: 'Female',
@@ -71,4 +73,12 @@ class Client < ApplicationRecord
             presence: true
   validates :passport_series, uniqueness: { scope: :passport_number }
   validates :identification_number, uniqueness: true
+
+  def full_name
+    [last_name, first_name, middle_name].compact.join(' ')
+  end
+
+  def full_passport
+    passport_series + passport_number
+  end
 end
