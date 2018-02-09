@@ -64,3 +64,15 @@ Deposit.create(deposit_type: dt_new_v, currency: currency_rub, months: 6, rate: 
 Deposit.create(deposit_type: dt_new_v, currency: currency_rub, months: 12, rate: 5)
 
 Deposit.create(deposit_type: dt_profitable, currency: currency_rub, months: 2, rate: 4)
+
+# https://tb.by/individuals/crediting/cash-loans/
+ct_half_year = CreditType.create(name: 'Обыкновенный кредит "На полгода"')
+ct_lite = CreditType.create(name: 'Обыкновенный кредит «Лайт»')
+ct_simple = CreditType.create(name: 'Обыкновенный кредит')
+
+Credit.create(credit_type: ct_half_year, currency: currency_byn, months: 6, rate: 11.9)
+
+Credit.create(credit_type: ct_lite, currency: currency_byn, months: 12, rate: 12.9)
+
+Credit.create(credit_type: ct_simple, currency: currency_byn, months: 24, rate: 15.5)
+Credit.create(credit_type: ct_simple, currency: currency_byn, months: 48, rate: 15.5)
