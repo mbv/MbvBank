@@ -25,5 +25,7 @@ class Deposit < ApplicationRecord
   belongs_to :deposit_type
   belongs_to :currency
 
-  delegate :name, to: :deposit_type
+  def name
+    "#{currency.code.upcase}, #{deposit_type.name}: #{rate}% #{months} months"
+  end
 end
