@@ -52,7 +52,7 @@ class Account < ApplicationRecord
   }
 
   def generate_number_and_pin
-    self.number = "#{ACCOUNT_NUMBER_PREFIX[account_type]}#{format('%04d', client_id)}#{format('%04d', id)}1"
+    self.number = "#{ACCOUNT_NUMBER_PREFIX[account_type.to_sym]}#{format('%04d', client_id)}#{format('%04d', id)}1"
     self.pin    = format('%04d', rand(10_000))
     save
   end
