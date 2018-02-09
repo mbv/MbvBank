@@ -1,84 +1,84 @@
 p#notice = notice
-
-p
-  strong First name:
-  = @client.first_name
-p
-  strong Last name:
-  = @client.last_name
-p
-  strong Middle name:
-  = @client.middle_name
-p
-  strong Birth date:
-  = @client.birth_date
-p
-  strong Birth place:
-  = @client.birth_place
-p
-  strong Gender:
-  = @client.gender
-p
-  strong Passport series:
-  = @client.passport_series
-p
-  strong Passport number:
-  = @client.passport_number
-p
-  strong Identification number:
-  = @client.identification_number
-p
-  strong Passport issued by:
-  = @client.passport_issued_by
-p
-  strong Passport issue date:
-  = @client.passport_issue_date
-p
-  strong Home phone number:
-  = @client.home_phone_number
-p
-  strong Mobile phone number:
-  = @client.mobile_phone_number
-p
-  strong Email:
-  = @client.email
-p
-  strong Family status:
-  = @client.family_status
-p
-  strong Disability:
-  = @client.disability
-p
-  strong Pensioner:
-  = @client.pensioner
-p
-  strong Monthly income:
-  = @client.monthly_income
-p
-  strong Work place:
-  = @client.work_place
-p
-  strong Work position:
-  = @client.work_position
-p
-  strong Citizenship:
-  = @client.citizenship
-p
-  strong Registration city:
-  = @client.registration_city
-p
-  strong Registration address:
-  = @client.registration_address
-p
-  strong Actual city:
-  = @client.actual_city
-p
-  strong Actual address:
-  = @client.actual_address
-p
-  strong Reservist:
-  = @client.reservist
-
-=> link_to 'Edit', edit_client_path(@client)
-'|
-=< link_to 'Back', clients_path
+= link_to 'Deposits', client_deposit_contracts_path(@client), class: 'btn btn-secondary float-right mb-2  ml-1'
+= link_to 'Edit', edit_client_path(@client), class: 'btn btn-primary float-right mb-2'
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name First name:
+      td = @client.first_name
+    tr
+      td.row-name Last name:
+      td = @client.last_name
+    tr
+      td.row-name Middle name:
+      td = @client.middle_name
+    tr
+      td.row-name Birth date:
+      td = @client.birth_date
+    tr
+      td.row-name Birth place:
+      td = @client.birth_place
+    tr
+      td.row-name Gender:
+      td = @client.gender
+    tr
+      td.row-name Passport series:
+      td = @client.passport_series
+    tr
+      td.row-name Passport number:
+      td = @client.passport_number
+    tr
+      td.row-name Identification number:
+      td = @client.identification_number
+    tr
+      td.row-name Passport issued by:
+      td = @client.passport_issued_by
+    tr
+      td.row-name Passport issue date:
+      td = @client.passport_issue_date
+    tr
+      td.row-name Home phone number:
+      td = @client.home_phone_number
+    tr
+      td.row-name Mobile phone number:
+      td = @client.mobile_phone_number
+    tr
+      td.row-name Email:
+      td = @client.email
+    tr
+      td.row-name Family status:
+      td = @client.family_status
+    tr
+      td.row-name Disability:
+      td = @client.disability
+    tr
+      td.row-name Pensioner:
+      td = @client.pensioner
+    tr
+      td.row-name Monthly income:
+      td = @client.monthly_income
+    tr
+      td.row-name Work place:
+      td = @client.work_place
+    tr
+      td.row-name Work position:
+      td = @client.work_position
+    tr
+      td.row-name Citizenship:
+      td = @client.citizenship
+    tr
+      td.row-name Registration city:
+      td = @client.registration_city
+    tr
+      td.row-name Registration address:
+      td = @client.registration_address
+    tr
+      td.row-name Actual city:
+      td = @client.actual_city
+    tr
+      td.row-name Actual address:
+      td = @client.actual_address
+    tr
+      td.row-name Reservist:
+      td = @client.reservist
+= link_to 'Back', clients_path, class: 'btn btn-secondary'
