@@ -5,8 +5,8 @@
 #  id             :integer          not null, primary key
 #  credit_type_id :integer
 #  currency_id    :integer
-#  amount         :decimal(19, 2)
-#  paid           :boolean          default(FALSE), not null
+#  rate           :decimal(19, 2)
+#  months         :integer
 #
 # Indexes
 #

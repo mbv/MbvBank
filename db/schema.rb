@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209130107) do
+ActiveRecord::Schema.define(version: 20180209195033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 20180209130107) do
   create_table "credits", force: :cascade do |t|
     t.bigint "credit_type_id"
     t.bigint "currency_id"
-    t.decimal "amount", precision: 19, scale: 2
-    t.boolean "paid", default: false, null: false
+    t.decimal "rate", precision: 19, scale: 2
+    t.integer "months"
     t.index ["credit_type_id"], name: "index_credits_on_credit_type_id"
     t.index ["currency_id"], name: "index_credits_on_currency_id"
   end
