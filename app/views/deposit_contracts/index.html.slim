@@ -1,4 +1,4 @@
-h1 Listing deposit_contracts
+h1 Listing Deposit Contracts
 .client-info-table-container
   table.table.table-bordered
     tbody
@@ -11,6 +11,10 @@ h1 Listing deposit_contracts
       tr
         td.row-name Identification number:
         td = @_client.identification_number
+
+.row.justify-content-center
+  = link_to 'New Deposit contract', new_client_deposit_contract_path, class: 'btn btn-success mb-3'
+
 table.table.table-striped.table-bordered
   thead
     tr
@@ -37,6 +41,4 @@ table.table.table-striped.table-bordered
         td = deposit_contract.main_account.amount
         td = deposit_contract.current_account.amount
 
-br
-
-= link_to 'New Deposit contract', new_client_deposit_contract_path
+= link_to 'Back', client_path(@_client), class: 'btn btn-secondary'

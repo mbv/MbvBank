@@ -18,4 +18,4 @@
         td = client.identification_number
   = f.collection_select :deposit_id, Deposit.includes(:deposit_type, :currency).all, :id, :name
   = f.text_field :amount
-  .actions = f.submit
+  = f.submit 'Save', class: 'btn btn-success'
