@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :clients do
     resources :deposit_contracts
+    resources :credit_contracts
   end
 
   get 'bank/stats', to: 'bank#stats'

@@ -1,0 +1,33 @@
+p#notice = notice
+
+p
+  strong Client:
+  = @credit_contract.client
+p
+  strong Credit:
+  = @credit_contract.credit
+p
+  strong Contract type:
+  = @credit_contract.contract_type
+p
+  strong Start date:
+  = @credit_contract.start_date
+p
+  strong End date:
+  = @credit_contract.end_date
+p
+  strong Main account:
+  = @credit_contract.main_account_id
+p
+  strong Current account:
+  = @credit_contract.current_account_id
+p
+  strong Next payment:
+  = @credit_contract.next_payment_id
+p
+  strong Closed:
+  = @credit_contract.closed
+
+=> link_to 'Edit', edit_credit_contract_path(@credit_contract)
+'|
+=< link_to 'Back', credit_contracts_path

@@ -1,0 +1,37 @@
+h1 Listing credit_contracts
+
+table
+  thead
+    tr
+      th Client
+      th Credit
+      th Contract type
+      th Start date
+      th End date
+      th Main account
+      th Current account
+      th Next payment
+      th Closed
+      th
+      th
+      th
+
+  tbody
+    - @credit_contracts.each do |credit_contract|
+      tr
+        td = credit_contract.client
+        td = credit_contract.credit
+        td = credit_contract.contract_type
+        td = credit_contract.start_date
+        td = credit_contract.end_date
+        td = credit_contract.main_account_id
+        td = credit_contract.current_account_id
+        td = credit_contract.next_payment_id
+        td = credit_contract.closed
+        td = link_to 'Show', credit_contract
+        td = link_to 'Edit', edit_credit_contract_path(credit_contract)
+        td = link_to 'Destroy', credit_contract, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Credit contract', new_credit_contract_path

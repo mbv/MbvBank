@@ -1,0 +1,36 @@
+= form_for @credit_contract do |f|
+  - if @credit_contract.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@credit_contract.errors.count, "error")} prohibited this credit_contract from being saved:"
+      ul
+        - @credit_contract.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :client
+    = f.text_field :client
+  .field
+    = f.label :credit
+    = f.text_field :credit
+  .field
+    = f.label :contract_type
+    = f.text_field :contract_type
+  .field
+    = f.label :start_date
+    = f.date_select :start_date
+  .field
+    = f.label :end_date
+    = f.date_select :end_date
+  .field
+    = f.label :main_account_id
+    = f.number_field :main_account_id
+  .field
+    = f.label :current_account_id
+    = f.number_field :current_account_id
+  .field
+    = f.label :next_payment_id
+    = f.number_field :next_payment_id
+  .field
+    = f.label :closed
+    = f.check_box :closed
+  .actions = f.submit
