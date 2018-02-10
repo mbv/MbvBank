@@ -1,33 +1,35 @@
 p#notice = notice
 
-p
-  strong Client:
-  = @credit_contract.client
-p
-  strong Credit:
-  = @credit_contract.credit
-p
-  strong Contract type:
-  = @credit_contract.contract_type
-p
-  strong Start date:
-  = @credit_contract.start_date
-p
-  strong End date:
-  = @credit_contract.end_date
-p
-  strong Main account:
-  = @credit_contract.main_account_id
-p
-  strong Current account:
-  = @credit_contract.current_account_id
-p
-  strong Next payment:
-  = @credit_contract.next_payment_id
-p
-  strong Closed:
-  = @credit_contract.closed
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Full Name:
+      td = @_client.full_name
+    tr
+      td.row-name Passport:
+      td = @_client.full_passport
+    tr
+      td.row-name Identification number:
+      td = @_client.identification_number
 
-=> link_to 'Edit', edit_credit_contract_path(@credit_contract)
-'|
-=< link_to 'Back', credit_contracts_path
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Account number:
+      td = @_resource.main_account.number
+    tr
+      td.row-name Account PIN:
+      td = @_resource.main_account.pin
+div Payments:
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th.row-name Date
+      th Amount
+  tbody
+    - @_resource.credit_payments.each do |credit_payment|
+      tr
+        td.row-name = credit_payment.date
+        td = credit_payment.amount
+
+= link_to 'Back', client_credit_contracts_path
