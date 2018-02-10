@@ -26,4 +26,8 @@ class Credit < ApplicationRecord
   def name
     "#{currency.code.upcase}, #{credit_type.name}: #{rate}% #{months} months"
   end
+
+  def rate_per_month
+    rate / 1200.0
+  end
 end

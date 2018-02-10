@@ -56,9 +56,8 @@ class CreditContract < ApplicationRecord
   end
 
   def annuity_amount
-    rate_per_month = credit.rate / 1200.0
-    part_annuity_ratio = (1 + rate_per_month)**credit.months
-    annuity_ratio = rate_per_month * part_annuity_ratio / (part_annuity_ratio - 1)
+    part_annuity_ratio = (1 + credit.rate_per_month)**credit.months
+    annuity_ratio = credit.rate_per_month * part_annuity_ratio / (part_annuity_ratio - 1)
     main_account.amount * annuity_ratio
   end
 
