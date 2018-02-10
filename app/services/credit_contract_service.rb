@@ -9,9 +9,9 @@ class CreditContractService
     return credit_contract unless credit_contract.valid?
 
     credit_contract.amount = credit_contract.amount.to_d
-    credit_contract.assign_attributes(current_account: create_deposit_account(credit_contract),
-                                      main_account:    create_deposit_account(credit_contract,
-                                                                              amount: credit_contract.amount),
+    credit_contract.assign_attributes(current_account: create_credit_account(credit_contract),
+                                      main_account:    create_credit_account(credit_contract,
+                                                                             amount: credit_contract.amount),
                                       start_date:      Time.zone.today,
                                       end_date:        credit_contract.credit.months.month.from_now,
                                       closed:          false)
@@ -19,6 +19,7 @@ class CreditContractService
     TransactionService.new(credit_contract.credit.currency)
       .on_create_credit_contract(credit_contract, credit_contract.amount)
 
+    create_credit_payments(credit_contract)
 
     credit_contract.save
     credit_contract
@@ -38,19 +39,21 @@ class CreditContractService
   end
 
   def create_credit_payments(credit_contract)
-    if credit_contract.contract_type.annuity?
-      #proposed_amount = credit_contract.credit.rate / 1200 * (1 + credit_contract.credit.rate / 1200) ** credit_contract.credit.months / ((1 + credit_contract.credit.rate / 1200) ** credit_contract.credit.months - 1) * credit_contract.main_account.amount
-    else
-      #proposed_amount = credit_contract.credit.rate / 100 / 365 * (1 + credit_contract.credit.rate / 100) ** (credit_contract.end_date - credit_contract.start_date).days / ((1 + credit_contract.credit.rate / 100) ** (credit_contract.end_date - credit_contract.start_date).days - 1) * credit_contract.main_account.amount
-    end
-    number_of_months = (credit_contract.end_date.year * 12 + credit_contract.end_date.month) -
-      (credit_contract.start_date.year * 12 + credit_contractstart_date.month) - 1
-    number_of_months.times do |i|
-      (i + 1).months
-    end
-  end
+    proposed_amount = credit_contract.month_amount
 
-  def create_credit_payment(date, amount)
+    next_payment_date = Date.new(credit_contract.start_date.year, credit_contract.start_date.month + 1, 25)
 
+    (credit_contract.credit.months - 1).times do
+      credit_payment = CreditPayment.create(credit_contract: credit_contract,
+                                            date:            next_payment_date,
+                                            amount:          proposed_amount)
+      credit_contract.next_payment ||= credit_payment
+      next_payment_date += 1.month
+    end
+    last_amount                  = credit_contract.annuity? ? proposed_amount : credit_contract.main_account.amount
+    credit_payment               = CreditPayment.create(credit_contract: credit_contract,
+                                                        date:            credit_contract.end_date,
+                                                        amount:          last_amount)
+    credit_contract.next_payment ||= credit_payment
   end
 end

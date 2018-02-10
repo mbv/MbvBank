@@ -31,6 +31,8 @@ class CreditContract < ApplicationRecord
   belongs_to :credit
   belongs_to :main_account, class_name: 'Account', optional: true
   belongs_to :current_account, class_name: 'Account', optional: true
+  belongs_to :next_payment, class_name: 'CreditPayment', optional: true
+  has_many :credit_payments
 
   enum contract_type: {
     annuity:        'Annuity',
@@ -47,5 +49,23 @@ class CreditContract < ApplicationRecord
                                         currency:     credit.currency)
     return if errors.present?
     errors.add(:amount, "can't borrow all bank money") if amount.to_d > bank_fund_account.real_amount
+  end
+
+  def month_amount
+    annuity? ? annuity_amount : differentiated_amount
+  end
+
+  def annuity_amount
+    rate_per_month = credit.rate / 1200.0
+    part_annuity_ratio = (1 + rate_per_month)**credit.months
+    annuity_ratio = rate_per_month * part_annuity_ratio / (part_annuity_ratio - 1)
+    main_account.amount * annuity_ratio
+  end
+
+  def differentiated_amount
+    credit_rate = credit.rate / 100
+    credit_days = (end_date - start_date).to_i
+    ratio = credit_rate / 365 * (1 + credit_rate)**credit_days / ((1 + credit_rate)**(credit_days - 1))
+    ratio * main_account.amount
   end
 end
