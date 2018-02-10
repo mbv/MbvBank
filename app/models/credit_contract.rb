@@ -65,7 +65,7 @@ class CreditContract < ApplicationRecord
   def differentiated_amount
     credit_rate = credit.rate / 100
     credit_days = (end_date - start_date).to_i
-    ratio = credit_rate / 365 * (1 + credit_rate)**credit_days / ((1 + credit_rate)**(credit_days - 1))
+    ratio = credit_rate / 365 * credit_days / credit.months
     ratio * main_account.amount
   end
 end
