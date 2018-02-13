@@ -10,4 +10,9 @@ Rails.application.routes.draw do
 
   get 'bank/stats', to: 'bank#stats'
   post 'bank/submit_day', to: 'bank#submit_day'
+
+  get 'atm', to: 'atm#login'
+  post 'atm', to: 'atm#login'
+  get 'atm/pin', to: 'atm#pin'
+
 end
