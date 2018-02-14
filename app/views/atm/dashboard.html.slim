@@ -1,0 +1,16 @@
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Account Number:
+      td = @account_number
+    tr
+      td.row-name Client:
+      td = @account.contract.client.full_name
+    tr
+      td.row-name Contract:
+      - if @account.deposit?
+        td = "Deposit: #{ @account.contract.deposit.name }"
+      - else
+        td = "Credit: #{ @account.contract.credit.full_name }"
+.row.justify-content-center
+  = link_to 'Money', atm_deposit_path, class: 'btn btn-success mb-2'

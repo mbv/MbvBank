@@ -32,6 +32,28 @@ class Account < ApplicationRecord
   belongs_to :client, optional: true
   belongs_to :currency
 
+  has_one :deposit_contract_through_main,
+          class_name: 'DepositContract',
+          foreign_key: :main_account_id,
+          inverse_of: :main_account,
+          dependent: :nullify
+  has_one :deposit_contract_through_current,
+          class_name: 'DepositContract',
+          foreign_key: :current_account_id,
+          inverse_of: :current_account,
+          dependent: :nullify
+
+  has_one :credit_contract_through_main,
+          class_name: 'CreditContract',
+          foreign_key: :main_account_id,
+          inverse_of: :main_account,
+          dependent: :nullify
+  has_one :credit_contract_through_current,
+          class_name: 'CreditContract',
+          foreign_key: :current_account_id,
+          inverse_of: :current_account,
+          dependent: :nullify
+
   enum account_type: {
     deposit:               'Deposit',
     credit:                'Credit',
@@ -56,5 +78,32 @@ class Account < ApplicationRecord
     self.number = "#{ACCOUNT_NUMBER_PREFIX[account_type.to_sym]}#{format('%04d', client_id)}#{format('%04d', id)}1"
     self.pin    = format('%04d', rand(10_000))
     save
+  end
+
+  def main?
+    return true if deposit? && !deposit_contract_through_main.nil?
+    return true if credit? && !credit_contract_through_main.nil?
+    false
+  end
+
+  def current?
+    return true if deposit? && !deposit_contract_through_current.nil?
+    return true if credit? && !credit_contract_through_current.nil?
+    false
+  end
+
+  def deposit_contract
+    return deposit_contract_through_main if main?
+    deposit_contract_through_current
+  end
+
+  def credit_contract
+    return credit_contract_through_main if main?
+    credit_contract_through_current
+  end
+
+  def contract
+    return deposit_contract if deposit?
+    credit_contract
   end
 end

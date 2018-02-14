@@ -1,0 +1,14 @@
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Account Number:
+      td = @account_number
+    tr
+      td.row-name Contract:
+      - if @account.deposit?
+        td = "Deposit: #{ @account.contract.deposit.name }"
+      - else
+        td = "Credit: #{ @account.contract.credit.full_name }"
+    tr
+      td.row-name Balance:
+      td = @account.amount

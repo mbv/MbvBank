@@ -1,1 +1,8 @@
-= @account_number
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Account Number:
+      td = @account_number
+= bootstrap_form_with(model: @atm_account_pin, url: '/atm/pin', inline_errors: true, local: true) do |f|
+  = f.text_field :pin
+  = f.submit 'Submit', class: 'btn btn-success'

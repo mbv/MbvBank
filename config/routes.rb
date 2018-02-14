@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   get 'bank/stats', to: 'bank#stats'
   post 'bank/submit_day', to: 'bank#submit_day'
 
-  get 'atm', to: 'atm#login'
+  get 'atm', to: 'atm#new_login'
   post 'atm', to: 'atm#login'
-  get 'atm/pin', to: 'atm#pin'
+  get 'atm/pin', to: 'atm#new_pin'
+  post 'atm/pin', to: 'atm#pin'
+
+  get 'atm/dashboard', to: 'atm#dashboard'
+  get 'atm/deposit', to: 'atm#deposit_money'
 
 end
