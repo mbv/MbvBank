@@ -33,7 +33,8 @@ class CreditContractService
                                account_type: :credit,
                                activity:     :passive,
                                amount:       0,
-                               real_amount:  0 }.merge(params))
+                               real_amount:  0,
+                               closed: false }.merge(params))
     account.generate_number_and_pin
     account
   end
