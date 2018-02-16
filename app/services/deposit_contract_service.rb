@@ -33,6 +33,16 @@ class DepositContractService
     deposit_contract.update closed: true
   end
 
+  def withdraw(account, amount)
+    account.amount -= amount
+    account.save
+
+    deposit_contract = account.contract
+    TransactionService.new(deposit_contract.deposit.currency)
+      .on_withdraw_deposit_contract(deposit_contract, amount)
+    true
+  end
+
   private def create_deposit_account(deposit_contract, params = {})
     account = Account.create({ client:       deposit_contract.client,
                                currency:     deposit_contract.deposit.currency,

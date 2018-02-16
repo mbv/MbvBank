@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get 'atm/pin', to: 'atm#new_pin'
   post 'atm/pin', to: 'atm#pin'
 
+
   get 'atm/dashboard', to: 'atm#dashboard'
+
   get 'atm/deposit', to: 'atm#deposit_money'
+  post 'atm/deposit_withdraw', to: 'atm#deposit_withdraw'
 
 end

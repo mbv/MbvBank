@@ -1,14 +1,21 @@
-table.table.table-striped.table-bordered
-  tbody
-    tr
-      td.row-name Account Number:
-      td = @account_number
-    tr
-      td.row-name Contract:
-      - if @account.deposit?
-        td = "Deposit: #{ @account.contract.deposit.name }"
-      - else
-        td = "Credit: #{ @account.contract.credit.full_name }"
-    tr
-      td.row-name Balance:
-      td = @account.amount
+= bootstrap_form_with(model: @atm_deposit_withdraw, url: '/atm/deposit_withdraw', inline_errors: true, local: true) do |f|
+  table.table.table-striped.table-bordered
+    tbody
+      tr
+        td.row-name Account Number:
+        td = @account_number
+      tr
+        td.row-name Contract:
+        - if @account.deposit?
+          td = "Deposit: #{ @account.contract.deposit.name }"
+        - else
+          td = "Credit: #{ @account.contract.credit.full_name }"
+      tr
+        td.row-name Procent Balance:
+        td = @account.amount
+      tr
+        td.row-name Withdraw money:
+        td = f.text_field :amount, hide_label: true
+      tr
+        td
+        td = f.submit 'Submit', class: 'btn btn-success'

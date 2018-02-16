@@ -1,0 +1,8 @@
+.mt-2
+  .alert.alert-primary role="alert"
+    | You've successfully withdrawn
+    strong<= @atm_deposit_withdraw.amount
+    span<= @account.currency.code.upcase
+
+.row.justify-content-center
+  = link_to 'Dashboard', atm_dashboard_path, class: 'btn btn-primary mt-3'
