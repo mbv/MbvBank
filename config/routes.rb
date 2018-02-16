@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   get 'atm/deposit', to: 'atm#deposit_money'
   post 'atm/deposit_withdraw', to: 'atm#deposit_withdraw'
 
+  get 'atm/credit', to: 'atm#credit_money'
+
 end

@@ -11,6 +11,9 @@ table.table.table-striped.table-bordered
       - if @account.deposit?
         td = "Deposit: #{ @account.contract.deposit.name }"
       - else
-        td = "Credit: #{ @account.contract.credit.full_name }"
+        td = "Credit: #{ @account.contract.credit.name }"
 .row.justify-content-center
-  = link_to 'Money', atm_deposit_path, class: 'btn btn-success mb-2'
+  - if @account.deposit?
+    = link_to 'Money', atm_deposit_path, class: 'btn btn-success mb-2'
+  - else
+    = link_to 'Payment', atm_credit_path, class: 'btn btn-warning mb-2'

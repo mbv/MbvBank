@@ -2,7 +2,7 @@
 
 class AtmController < ApplicationController
   before_action :validate_account_number, except: %i[new_login login]
-  before_action :validate_account, only: %i[dashboard deposit_money deposit_withdraw]
+  before_action :validate_account, only: %i[dashboard deposit_money deposit_withdraw credit_money]
 
   def new_login
     @atm_account_number = Forms::AtmAccountNumber.new
@@ -49,6 +49,10 @@ class AtmController < ApplicationController
       return render 'deposit_money'
     end
     clear_pin
+  end
+
+  def credit_money
+
   end
 
   private
