@@ -6,10 +6,7 @@
         td = @account_number
       tr
         td.row-name Contract:
-        - if @account.deposit?
-          td = "Deposit: #{ @account.contract.deposit.name }"
-        - else
-          td = "Credit: #{ @account.contract.credit.full_name }"
+        td = "Deposit: #{ @account.contract.deposit.name }"
       tr
         td.row-name Procent Balance:
         td = @account.amount
