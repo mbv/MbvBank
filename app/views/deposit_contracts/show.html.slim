@@ -1,27 +1,24 @@
 p#notice = notice
 
-p
-  strong Client:
-  = @_resource.client
-p
-  strong Deposit:
-  = @_resource.deposit
-p
-  strong Start date:
-  = @_resource.start_date
-p
-  strong End date:
-  = @_resource.end_date
-p
-  strong Main account:
-  = @_resource.main_account
-p
-  strong Current account:
-  = @_resource.current_account
-p
-  strong Closed:
-  = @_resource.closed
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Full Name:
+      td = @_client.full_name
+    tr
+      td.row-name Passport:
+      td = @_client.full_passport
+    tr
+      td.row-name Identification number:
+      td = @_client.identification_number
 
-=> link_to 'Edit', edit_client_deposit_contract_path(@_client, @_resource)
-'|
-=< link_to 'Back', client_deposit_contracts_path
+table.table.table-striped.table-bordered
+  tbody
+    tr
+      td.row-name Account number:
+      td = @_resource.current_account.number
+    tr
+      td.row-name Account PIN:
+      td = @_resource.current_account.pin
+
+= link_to 'Back', client_deposit_contracts_path, class: 'btn btn-secondary'
