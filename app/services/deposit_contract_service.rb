@@ -24,6 +24,7 @@ class DepositContractService
   end
 
   def revoke(deposit_contract)
+    return false unless deposit_contract.revocable?
     TransactionService.new(deposit_contract.deposit.currency)
       .on_revoke_deposit_contract(deposit_contract)
 
@@ -31,6 +32,7 @@ class DepositContractService
     deposit_contract.main_account.update closed: true
 
     deposit_contract.update closed: true
+    true
   end
 
   def withdraw(account, amount)

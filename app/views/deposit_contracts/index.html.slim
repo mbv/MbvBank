@@ -27,6 +27,7 @@ table.table.table-striped.table-bordered
       th Expires on
       th Main account balance
       th Current account balance
+      th
 
   tbody
     - @_resources.each do |deposit_contract|
@@ -40,5 +41,12 @@ table.table.table-striped.table-bordered
         td = deposit_contract.end_date
         td = deposit_contract.main_account.amount
         td = deposit_contract.current_account.amount
+        td
+          - if deposit_contract.revocable?
+            = bootstrap_form_tag(url: client_deposit_contract_revoke_path(@_client, deposit_contract), method: :post) do |f|
+              = f.hidden_field :id, value: deposit_contract.id
+              = f.submit 'Revoke', class: 'btn btn-success'
+          - elsif deposit_contract.closed
+            .badge.badge-pill.badge-dark Closed
 
 = link_to 'Back', client_path(@_client), class: 'btn btn-secondary'

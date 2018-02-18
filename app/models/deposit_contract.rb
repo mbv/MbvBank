@@ -33,7 +33,7 @@ class DepositContract < ApplicationRecord
 
   attr_accessor :amount
 
-  validates :amount, numericality: true, presence: true
+  validates :amount, numericality: true, presence: true, on: :create
 
   def interest_amount_per_day
     main_account.amount * deposit.rate / 100 / days_in_a_year
@@ -41,5 +41,13 @@ class DepositContract < ApplicationRecord
 
   def days_in_a_year
     Time.zone.today.end_of_year.yday
+  end
+
+  def full_amount
+    main_account.amount + current_account.amount
+  end
+
+  def revocable?
+    !closed && deposit.deposit_type.revocable
   end
 end

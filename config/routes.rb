@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'clients#index'
 
   resources :clients do
-    resources :deposit_contracts
+    resources :deposit_contracts do
+      post 'revoke', to: 'deposit_contracts#revoke'
+    end
     resources :credit_contracts do
       post 'pay', to: 'credit_contracts#pay'
     end

@@ -11,6 +11,11 @@ table.table.table-striped.table-bordered
     tr
       td.row-name Identification number:
       td = @_client.identification_number
+    - if @_resource.closed
+      tr
+        td.row-name Status:
+        td
+          .badge.badge-pill.badge-dark Closed
 
 table.table.table-striped.table-bordered
   tbody

@@ -27,8 +27,12 @@ class DepositContractsController < ApplicationController
   end
 
   def revoke
-    DepositContractService.new.revoke(resource)
-    flash[:notice] = 'Successfully revoked'
+    if DepositContractService.new.revoke(resource)
+      flash[:notice] = 'Successfully revoked. ' \
+        "And paid <strong>#{resource.full_amount}</strong> #{resource.main_account.currency.code.upcase}"
+    else
+      flash[:error] = 'Error. Can\'t revoke not revocable deposit'
+    end
     redirect_to action: :index
   end
 
