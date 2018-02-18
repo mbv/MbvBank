@@ -9,6 +9,11 @@ table.table.table-striped.table-bordered
     tr
       td.row-name Identification number:
       td = @_client.identification_number
+    - if @_resource.paid?
+      tr
+        td.row-name Status:
+        td
+          .badge.badge-pill.badge-success Paid
 
 table.table.table-striped.table-bordered
   tbody
@@ -37,6 +42,6 @@ table.table.table-striped.table-bordered
               = f.submit 'Pay', class: 'btn btn-success'
           - else
             - if credit_payment.paid
-              | Paid
+              .badge.badge-pill.badge-success Paid
 
 = link_to 'Back', client_credit_contracts_path
