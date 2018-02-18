@@ -2,7 +2,7 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
   .container
     a.navbar-brand[href="/"]
       | MbvBank
-    button.navbar-toggler.navbar-toggler-right[type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"]
+    button.navbar-toggler.navbar-toggler-right[type="button" data-toggle="collapse" data-target="#navbarsMbvBank" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"]
       span.navbar-toggler-icon
     #navbarsMbvBank.collapse.navbar-collapse
       ul.navbar-nav.ml-auto
@@ -12,19 +12,3 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
           = nav_link 'Bank Stats', bank_stats_path
         li.nav-item
           = nav_link 'ATM', atm_path
-        /- if user_signed_in?
-        /  li.nav-item
-        /    = nav_link I18n.t("sections.records"), records_path
-        /  li.nav-item
-        /    = nav_link I18n.t("sections.solutions"), solutions_path
-        /  li.nav-item
-        /    = nav_link I18n.t("sections.clients"), clients_path
-        /  li.nav-item
-        /    = nav_link I18n.t("sections.phone_brands"), phone_brands_path
-        /  li.nav-item
-        /    = nav_link I18n.t("sections.phone_models"), phone_models_path
-        /  li.nav-item
-        /    = link_to(I18n.t("devise.shared.links.sign_out"), destroy_user_session_path, method: :delete, class: "btn btn-outline-danger")
-        /- else
-        /  li.nav-item
-        /    = nav_link I18n.t("devise.shared.links.sign_in"), new_user_session_path
