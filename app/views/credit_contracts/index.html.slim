@@ -40,5 +40,5 @@ table.table.table-striped.table-bordered
         td = credit_contract.end_date
         td = credit_contract.main_account.amount
         td
-          - if credit_contract.next_payment.nil?
+          - if credit_contract.paid?
             | Paid

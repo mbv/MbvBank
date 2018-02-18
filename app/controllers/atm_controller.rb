@@ -2,7 +2,7 @@
 
 class AtmController < ApplicationController
   before_action :validate_account_number, except: %i[new_login login]
-  before_action :validate_account, only: %i[dashboard deposit_money deposit_withdraw credit_money]
+  before_action :validate_account, only: %i[dashboard deposit_money deposit_withdraw credit_money credit_payment]
 
   def new_login
     @atm_account_number = Forms::AtmAccountNumber.new
@@ -52,7 +52,18 @@ class AtmController < ApplicationController
   end
 
   def credit_money
+    if @account.credit_contract.paid?
+      flash[:error] = 'Credit already paid '
+      redirect_to action: :dashboard
+    end
+  end
 
+  def credit_payment
+    unless CreditContractService.new.pay(@account.credit_contract.next_payment)
+      flash[:error] = 'Unknown error'
+      return render 'credit_money'
+    end
+    clear_pin
   end
 
   private

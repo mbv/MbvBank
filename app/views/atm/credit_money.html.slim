@@ -1,4 +1,4 @@
-= bootstrap_form_with(model: @atm_deposit_withdraw, url: '/atm/deposit_withdraw', inline_errors: true, local: true) do |f|
+= bootstrap_form_with(url: '/atm/credit_payment', inline_errors: true, local: true) do |f|
   table.table.table-striped.table-bordered
     tbody
       tr
@@ -12,7 +12,7 @@
         td = @account.amount
       tr
         td.row-name Current payment amount:
-        td = f.text_field :amount, hide_label: true
+        td = @account.credit_contract.next_payment.amount
       tr
         td
         td = f.submit 'Submit', class: 'btn btn-success'

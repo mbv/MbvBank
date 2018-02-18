@@ -6,14 +6,20 @@ table.table.table-striped.table-bordered
     tr
       td.row-name Client:
       td = @account.contract.client.full_name
-    tr
-      td.row-name Contract:
-      - if @account.deposit?
+    - if @account.deposit?
+      tr
+        td.row-name Contract:
         td = "Deposit: #{ @account.contract.deposit.name }"
-      - else
+    - else
+      tr
+        td.row-name Contract:
         td = "Credit: #{ @account.contract.credit.name }"
+      - if @account.credit_contract.paid?
+        tr
+          td.row-name Status:
+          td Paid
 .row.justify-content-center
   - if @account.deposit?
     = link_to 'Money', atm_deposit_path, class: 'btn btn-success mb-2'
-  - else
+  - elsif !@account.credit_contract.paid?
     = link_to 'Payment', atm_credit_path, class: 'btn btn-warning mb-2'

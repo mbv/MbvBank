@@ -51,6 +51,10 @@ class CreditContract < ApplicationRecord
     errors.blank?
   end
 
+  def paid?
+    next_payment.nil?
+  end
+
   def month_amount
     annuity? ? annuity_amount : differentiated_amount
   end
