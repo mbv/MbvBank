@@ -26,6 +26,12 @@ class DepositContractsController < ApplicationController
     respond_with client, resource
   end
 
+  def revoke
+    DepositContractService.new.revoke(resource)
+    flash[:notice] = 'Successfully revoked'
+    redirect_to action: :index
+  end
+
   # POST /deposit_contracts
   # POST /deposit_contracts.json
   def create
