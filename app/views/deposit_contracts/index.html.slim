@@ -32,7 +32,7 @@ table.table.table-striped.table-bordered
     - @_resources.each do |deposit_contract|
       tr
         td = deposit_contract.deposit.deposit_type.name
-        td = deposit_contract.main_account.number
+        td = link_to deposit_contract.main_account.number, [@_client, deposit_contract]
         td = deposit_contract.current_account.number
         td = deposit_contract.deposit.currency.code.upcase
         td = deposit_contract.deposit.rate
