@@ -7,6 +7,7 @@ class CreditContractService
     credit_contract.client = client
 
     return credit_contract unless credit_contract.valid?
+    return credit_contract unless credit_contract.can_borrow_amount
 
     credit_contract.amount = credit_contract.amount.to_d
     credit_contract.assign_attributes(current_account: create_credit_account(credit_contract),

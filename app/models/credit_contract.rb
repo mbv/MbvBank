@@ -42,13 +42,13 @@ class CreditContract < ApplicationRecord
   attr_accessor :amount
 
   validates :amount, numericality: true, presence: true, on: :create
-  validate :can_borrow_amount, on: :create
 
   def can_borrow_amount
     bank_fund_account = Account.find_by(account_type: :bank_development_fund,
                                         currency:     credit.currency)
-    return if errors.present?
+    return false if errors.present?
     errors.add(:amount, "can't borrow all bank money") if amount.to_d > bank_fund_account.real_amount
+    errors.blank?
   end
 
   def month_amount
