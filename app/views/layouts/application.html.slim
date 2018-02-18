@@ -13,5 +13,5 @@ html[lang="ru"]
     .container
       - flash.each do |type, msg|
         div class=("mt-2 alert #{bootstrap_class_for(type)}") role="alert"
-          = msg
+          = msg.html_safe
       = yield
