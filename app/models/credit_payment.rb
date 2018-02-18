@@ -21,4 +21,13 @@
 
 class CreditPayment < ApplicationRecord
   belongs_to :credit_contract
+  has_one :credit_contract_through_next,
+          class_name: 'CreditContract',
+          foreign_key: :next_payment_id,
+          inverse_of: :next_payment,
+          dependent: :nullify
+
+  def next_payment?
+    !credit_contract_through_next.nil?
+  end
 end

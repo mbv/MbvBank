@@ -11,4 +11,7 @@ html[lang="ru"]
   body
     = render 'layouts/navbar'
     .container
+      - flash.each do |type, msg|
+        div class=("alert #{bootstrap_class_for(type)}") role="alert"
+          = msg
       = yield

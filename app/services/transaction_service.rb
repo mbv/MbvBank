@@ -38,8 +38,15 @@ class TransactionService
     bank_cashbox_account.update real_amount: 0 # clear cashbox, imitation of money withdrawal
   end
 
-  def on_credit_payment_paid(credit_contract)
+  def on_credit_payment_paid(credit_payment)
+    amount = credit_payment.amount
+    credit_contract = credit_payment.credit_contract
 
+    credit_contract.current_account.amount += amount
+
+    bank_cashbox_account.real_amount += amount # will be saved in transaction, imitation of depositing money
+    make_transaction(bank_cashbox_account, credit_contract.current_account, amount)
+    make_transaction(credit_contract.current_account, bank_fund_account, amount)
   end
 
   def make_transaction(source_account, destination_account, amount)

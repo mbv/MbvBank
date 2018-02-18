@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :clients do
     resources :deposit_contracts
-    resources :credit_contracts
+    resources :credit_contracts do
+      post 'pay', to: 'credit_contracts#pay'
+    end
   end
 
   get 'bank/stats', to: 'bank#stats'

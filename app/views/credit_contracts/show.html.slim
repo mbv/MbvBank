@@ -1,5 +1,3 @@
-p#notice = notice
-
 table.table.table-striped.table-bordered
   tbody
     tr
@@ -26,10 +24,19 @@ table.table.table-striped.table-bordered
     tr
       th.row-name Date
       th Amount
+      th
   tbody
-    - @_resource.credit_payments.each do |credit_payment|
+    - @_resource.credit_payments.order(:date).each do |credit_payment|
       tr
         td.row-name = credit_payment.date
         td = credit_payment.amount
+        td
+          - if credit_payment.id == @_resource.next_payment_id
+            = bootstrap_form_tag(url: client_credit_contract_pay_path(@_client, @_resource), method: :post) do |f|
+              = f.hidden_field :credit_payment_id, value: credit_payment.id
+              = f.submit 'Pay', class: 'btn btn-success'
+          - else
+            - if credit_payment.paid
+              | Paid
 
 = link_to 'Back', client_credit_contracts_path

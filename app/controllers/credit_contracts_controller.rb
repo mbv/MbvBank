@@ -39,6 +39,15 @@ class CreditContractsController < ApplicationController
     respond_with client, resource
   end
 
+  def pay
+    if CreditContractService.new.pay(credit_payment)
+      flash[:notice] = 'Successfully paid'
+    else
+      flash[:error] = 'Error. Invalid data'
+    end
+    redirect_to [client, resource]
+  end
+
   # DELETE /credit_contracts/1
   # DELETE /credit_contracts/1.json
   def destroy
@@ -53,10 +62,14 @@ class CreditContractsController < ApplicationController
   end
 
   def resource
-    @_resource ||= CreditContract.find(params[:id])
+    @_resource ||= CreditContract.find(params[:id] || params[:credit_contract_id])
   end
 
   def credit_contract_params
     params.require(:credit_contract).permit(:client_id, :credit_id, :contract_type, :amount)
+  end
+
+  def credit_payment
+    @_credit_payment ||= CreditPayment.find(params[:credit_payment_id])
   end
 end

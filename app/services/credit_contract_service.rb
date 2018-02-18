@@ -25,6 +25,18 @@ class CreditContractService
     credit_contract
   end
 
+  def pay(credit_payment)
+    return false if credit_payment.paid
+    TransactionService.new(credit_payment.credit_contract.credit.currency)
+      .on_credit_payment_paid(credit_payment)
+
+    credit_payment.update paid: true
+
+    next_payment = credit_payment.credit_contract.credit_payments.where(paid: false).order(:date).first
+    credit_payment.credit_contract.update_attributes next_payment: next_payment
+    true
+  end
+
   private
 
   def create_credit_account(credit_contract, params = {})

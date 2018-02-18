@@ -26,15 +26,19 @@ table.table.table-striped.table-bordered
       th Opened on
       th Expires on
       th Balance
+      th Paid
 
   tbody
     - @_resources.each do |credit_contract|
       tr
         td = credit_contract.credit.credit_type.name
-        td = credit_contract.main_account.number
+        td = link_to credit_contract.main_account.number, [@_client, credit_contract]
         td = credit_contract.current_account.number
         td = credit_contract.credit.currency.code.upcase
         td = credit_contract.credit.rate
         td = credit_contract.start_date
         td = credit_contract.end_date
         td = credit_contract.main_account.amount
+        td
+          - if credit_contract.next_payment.nil?
+            | Paid
