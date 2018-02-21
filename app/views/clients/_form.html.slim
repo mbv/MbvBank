@@ -6,8 +6,8 @@
         - @_resource.errors.full_messages.each do |message|
           li = message
 
-  = f.text_field :first_name
   = f.text_field :last_name
+  = f.text_field :first_name
   = f.text_field :middle_name
 
   = f.text_field :birth_date, as: :string, 'data-provide':'datepicker', 'data-date-format':'dd.mm.yyyy'
