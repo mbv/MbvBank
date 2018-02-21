@@ -1,4 +1,4 @@
-= bootstrap_form_with(model: @client, inline_errors: true, local: true) do |f|
+= bootstrap_form_with(model: @_resource, inline_errors: true, local: true) do |f|
   - if @_resource.errors.any?
     #error_explanation
       h2 = "#{pluralize(@_resource.errors.count, "error")} prohibited this client from being saved:"
