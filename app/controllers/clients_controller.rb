@@ -46,8 +46,11 @@ class ClientsController < ApplicationController
   # DELETE /clients/1.json
   def destroy
     resource.destroy
-    flash[:error] = 'Cannot delete client because dependent deposit/credit contracts exist' unless resource.errors.blank?
-    redirect_back(fallback_location: clients_path)
+    if resource.errors.present?
+      flash[:error] = 'Cannot delete client because dependent deposit/credit contracts exist'
+      return redirect_back(fallback_location: clients_path)
+    end
+    redirect_to action: :index
   end
 
   private
