@@ -1,86 +1,86 @@
 p#notice = notice
-= link_to 'Destroy', @client, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger float-right mb-2 ml-1'
-= link_to 'Edit', edit_client_path(@client), class: 'btn btn-primary float-right mb-2 ml-5'
-= link_to 'Deposits', client_deposit_contracts_path(@client), class: 'btn btn-secondary float-right mb-2 ml-1'
-= link_to 'Credits', client_credit_contracts_path(@client), class: 'btn btn-warning float-right mb-2'
+= link_to 'Destroy', @_resource, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger float-right mb-2 ml-1'
+= link_to 'Edit', edit_client_path(@_resource), class: 'btn btn-primary float-right mb-2 ml-5'
+= link_to 'Deposits', client_deposit_contracts_path(@_resource), class: 'btn btn-secondary float-right mb-2 ml-1'
+= link_to 'Credits', client_credit_contracts_path(@_resource), class: 'btn btn-warning float-right mb-2'
 table.table.table-striped.table-bordered
   tbody
     tr
       td.row-name First name:
-      td = @client.first_name
+      td = @_resource.first_name
     tr
       td.row-name Last name:
-      td = @client.last_name
+      td = @_resource.last_name
     tr
       td.row-name Middle name:
-      td = @client.middle_name
+      td = @_resource.middle_name
     tr
       td.row-name Birth date:
-      td = @client.birth_date
+      td = @_resource.birth_date
     tr
       td.row-name Birth place:
-      td = @client.birth_place
+      td = @_resource.birth_place
     tr
       td.row-name Gender:
-      td = @client.gender
+      td = @_resource.gender
     tr
       td.row-name Passport series:
-      td = @client.passport_series
+      td = @_resource.passport_series
     tr
       td.row-name Passport number:
-      td = @client.passport_number
+      td = @_resource.passport_number
     tr
       td.row-name Identification number:
-      td = @client.identification_number
+      td = @_resource.identification_number
     tr
       td.row-name Passport issued by:
-      td = @client.passport_issued_by
+      td = @_resource.passport_issued_by
     tr
       td.row-name Passport issue date:
-      td = @client.passport_issue_date
+      td = @_resource.passport_issue_date
     tr
       td.row-name Home phone number:
-      td = @client.home_phone_number
+      td = @_resource.home_phone_number
     tr
       td.row-name Mobile phone number:
-      td = @client.mobile_phone_number
+      td = @_resource.mobile_phone_number
     tr
       td.row-name Email:
-      td = @client.email
+      td = @_resource.email
     tr
       td.row-name Family status:
-      td = @client.family_status
+      td = @_resource.family_status
     tr
       td.row-name Disability:
-      td = @client.disability
+      td = @_resource.disability
     tr
       td.row-name Pensioner:
-      td = @client.pensioner
+      td = @_resource.pensioner
     tr
       td.row-name Monthly income:
-      td = @client.monthly_income
+      td = @_resource.monthly_income
     tr
       td.row-name Work place:
-      td = @client.work_place
+      td = @_resource.work_place
     tr
       td.row-name Work position:
-      td = @client.work_position
+      td = @_resource.work_position
     tr
       td.row-name Citizenship:
-      td = @client.citizenship
+      td = @_resource.citizenship
     tr
       td.row-name Registration city:
-      td = @client.registration_city
+      td = @_resource.registration_city
     tr
       td.row-name Registration address:
-      td = @client.registration_address
+      td = @_resource.registration_address
     tr
       td.row-name Actual city:
-      td = @client.actual_city
+      td = @_resource.actual_city
     tr
       td.row-name Actual address:
-      td = @client.actual_address
+      td = @_resource.actual_address
     tr
       td.row-name Reservist:
-      td = @client.reservist
+      td = @_resource.reservist
 = link_to 'Back', clients_path, class: 'btn btn-secondary'
