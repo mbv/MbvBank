@@ -45,7 +45,7 @@ table.table.table-striped.table-bordered
           - if deposit_contract.revocable?
             = bootstrap_form_tag(url: client_deposit_contract_revoke_path(@_client, deposit_contract), method: :post) do |f|
               = f.hidden_field :id, value: deposit_contract.id
-              = f.submit 'Revoke', class: 'btn btn-success'
+              = f.submit 'Revoke', class: 'btn btn-info'
           - elsif deposit_contract.closed
             .badge.badge-pill.badge-dark Closed
 
