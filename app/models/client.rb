@@ -75,7 +75,7 @@ class Client < ApplicationRecord
 
   validates :first_name, :last_name, :middle_name, format: { with: /\A[^0-9`!@#$%^&*+_=]+\z/ }
 
-  validates :passport_series, uniqueness: { scope: :passport_number }
+  validates :passport_number, uniqueness: { scope: :passport_series }
   validates :identification_number, uniqueness: true
 
   def full_name
