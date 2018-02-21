@@ -72,6 +72,9 @@ class Client < ApplicationRecord
             :identification_number, :birth_place, :passport_issued_by, :passport_issue_date, :actual_city,
             :registration_address, :registration_city, :registration_address, :family_status, :citizenship, :disability,
             presence: true
+
+  validates :first_name, :last_name, :middle_name, format: { with: /\A[^0-9`!@#$%^&*+_=]+\z/ }
+
   validates :passport_series, uniqueness: { scope: :passport_number }
   validates :identification_number, uniqueness: true
 
