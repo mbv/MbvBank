@@ -29,10 +29,10 @@
 class CreditContract < ApplicationRecord
   belongs_to :client
   belongs_to :credit
-  belongs_to :main_account, class_name: 'Account', optional: true
-  belongs_to :current_account, class_name: 'Account', optional: true
+  belongs_to :main_account, class_name: 'Account', optional: true, dependent: :destroy
+  belongs_to :current_account, class_name: 'Account', optional: true, dependent: :destroy
   belongs_to :next_payment, class_name: 'CreditPayment', optional: true
-  has_many :credit_payments
+  has_many :credit_payments, dependent: :destroy
 
   enum contract_type: {
     annuity:        'Annuity',

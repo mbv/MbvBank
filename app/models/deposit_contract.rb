@@ -28,8 +28,8 @@
 class DepositContract < ApplicationRecord
   belongs_to :client
   belongs_to :deposit
-  belongs_to :main_account, class_name: 'Account', optional: true
-  belongs_to :current_account, class_name: 'Account', optional: true
+  belongs_to :main_account, class_name: 'Account', optional: true, dependent: :destroy
+  belongs_to :current_account, class_name: 'Account', optional: true, dependent: :destroy
 
   attr_accessor :amount
 
