@@ -18,8 +18,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/new
   def new
-    resource = Client.new
-    respond_with resource
+    respond_with @_resource = Client.new
   end
 
   # GET /clients/1/edit
@@ -30,7 +29,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    resource = Client.new(client_params)
+    @_resource = Client.new(client_params)
     resource.save
     respond_with resource
   end
