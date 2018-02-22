@@ -78,7 +78,7 @@ class Client < ApplicationRecord
   validates :passport_number, uniqueness: { scope: :passport_series }
   validates :identification_number, uniqueness: true
 
-  validates :birth_date, :passport_issued_by, in_past: true
+  validates :birth_date, :passport_issue_date, in_past: true
 
   def full_name
     [last_name, first_name, middle_name].compact.join(' ')
