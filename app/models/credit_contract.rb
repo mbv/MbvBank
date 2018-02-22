@@ -41,7 +41,8 @@ class CreditContract < ApplicationRecord
 
   attr_accessor :amount
 
-  validates :amount, numericality: true, presence: true, on: :create
+  validates :amount, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100_000_000_000 },
+            presence: true, on: :create
 
   def can_borrow_amount
     bank_fund_account = Account.find_by(account_type: :bank_development_fund,

@@ -33,7 +33,8 @@ class DepositContract < ApplicationRecord
 
   attr_accessor :amount
 
-  validates :amount, numericality: true, presence: true, on: :create
+  validates :amount, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100_000_000_000 },
+            presence: true, on: :create
 
   def interest_amount_per_day
     main_account.amount * deposit.rate / 100 / days_in_a_year
